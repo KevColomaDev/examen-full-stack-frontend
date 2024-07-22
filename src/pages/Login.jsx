@@ -1,12 +1,24 @@
 import { useForm } from "react-hook-form"
 import { loginRequest } from "../api/auth"
+import { useState } from "react"
+import { Mensaje } from "../components/Mensaje"
 
 export const Login = () => {
   const { register, handleSubmit } = useForm()
+  const [error, setError] = useState({})
+
 
   const onSubmit = async (data) => {
-    const response = await loginRequest(data.email, data.password)
-    console.log(response)
+    try {
+      const response = await loginRequest(data.email, data.password)
+      if (response) {
+        window.location.href = "/"
+      }
+    } catch (error) {
+      console.log(error.response.data.msg)
+      setError({ type: 'Error: ', message: error.response.data.msg })
+      console.log(error)
+    }
   }
   
   return (
@@ -21,7 +33,9 @@ export const Login = () => {
             Sign in to your account
           </h2>
         </div>
-
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          {Object.keys(error).length > 0 && <Mensaje type={error.type} message={error.message}/>}
+        </div>
         <form className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm" onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
             Email address
