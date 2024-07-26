@@ -4,13 +4,14 @@ import { useState } from "react"
 import { Mensaje } from "../components/Mensaje"
 
 export const Login = () => {
+  // Prevent default form submission
   const { register, handleSubmit } = useForm()
   const [error, setError] = useState({})
 
 
   const onSubmit = async (data) => {
     try {
-      const response = await loginRequest(data.email, data.password)
+      const response = await loginRequest(data)
       if (response) {
         window.location.href = "/"
       }

@@ -2,11 +2,7 @@ import axios from "axios"
 
 const administratorAPI = 'http://localhost:4321/administrators'
 
-export const loginRequest = async (email, password) => {
-  const user = {
-    email,
-    password
-  }
+export const loginRequest = async (user) => {
   const response = await axios.post(`${administratorAPI}/login`, user)
-  return response.data
+  return console.log(response.data)
 }
