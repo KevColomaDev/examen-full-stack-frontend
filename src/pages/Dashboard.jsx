@@ -1,6 +1,6 @@
 import { Header } from "../components/Header"
 import { Description } from "../components/Description"
-export const Deshboard = () => {
+export const Dashboard = () => {
   return (
     <>
       <Header />
