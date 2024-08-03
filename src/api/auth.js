@@ -7,3 +7,8 @@ export const loginRequest = async (user) => {
   const response = await axios.post(`${administratorAPI}/login`, user, { withCredentials: true })
   return console.log(response.data)
 }
+
+export const dietDataRequest = async () => {
+  const response = await axios.get(`${administratorAPI}/diet-data`, { withCredentials: true })
+  return response.data
+}
