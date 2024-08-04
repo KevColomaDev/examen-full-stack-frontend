@@ -17,3 +17,8 @@ export const dataRoomRequest = async (roomNumber) => {
   const response = await axios.get(`${administratorAPI}/data-room/${roomNumber}`, { withCredentials: true })
   return response.data
 }
+
+export const registerInRoomRequest = async (data) => {
+  const response = await axios.post(`${administratorAPI}/register-in-room`, data, { withCredentials: true })
+  return response.data
+}
