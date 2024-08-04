@@ -19,7 +19,7 @@ export const Description = () => {
   return (
     <>
       <div className="grid grid-cols-3 text-white font-extrabold font-sans">
-        <div className="ccol-span-1 bg-cyan-700 flex flex-col justify-center items-center gap-3 py-20">
+        <div className="ccol-span-1 bg-cyan-700 flex flex-col justify-center items-center gap-3 py-16">
           <h1 className="text-3xl"> 
             Habitaciones
           </h1>

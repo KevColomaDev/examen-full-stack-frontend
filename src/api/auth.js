@@ -12,3 +12,8 @@ export const dietDataRequest = async () => {
   const response = await axios.get(`${administratorAPI}/diet-data`, { withCredentials: true })
   return response.data
 }
+
+export const dataRoomRequest = async (roomNumber) => {
+  const response = await axios.get(`${administratorAPI}/data-room/${roomNumber}`, { withCredentials: true })
+  return response.data
+}
