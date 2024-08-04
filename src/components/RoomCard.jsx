@@ -5,7 +5,7 @@ export const RoomCard = (props) => {
   const { name } = props
   return (
     <>
-      <div className="bg-cyan-700 flex flex-col justify-center gap-3 w-96 h-56 rounded-lg">
+      <div className="bg-sky-800 flex flex-col justify-center gap-3 w-96 h-56 rounded-lg">
           <h1 className="text-3xl text-center text-white font-extrabold font-sans">
             Habitación {props.room}
           </h1>

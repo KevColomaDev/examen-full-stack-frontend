@@ -19,7 +19,7 @@ export const Description = () => {
   return (
     <>
       <div className="grid grid-cols-3 text-white font-extrabold font-sans">
-        <div className="ccol-span-1 bg-cyan-700 flex flex-col justify-center items-center gap-3 py-16">
+        <div className="ccol-span-1 bg-sky-800 flex flex-col justify-center items-center gap-3 py-16">
           <h1 className="text-3xl"> 
             Habitaciones
           </h1>
@@ -30,7 +30,7 @@ export const Description = () => {
             Disponibles
           </h2>
         </div>
-        <div className="col-span-2 bg-cyan-500">
+        <div className="col-span-2 bg-sky-700">
           <h3 className="text-3xl flex justify-center p-10">Dieta</h3>
           <div className="grid grid-cols-3">
             <div className="flex flex-col justify-center items-center gap-5">
