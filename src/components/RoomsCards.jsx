@@ -3,7 +3,8 @@ import { dataRoomRequest } from "../api/auth"
 import { useEffect, useState } from "react"
 
 export const RoomsCards = () => {
-  const [rooms, setRooms] = useState([]);
+  const [rooms, setRooms] = useState([])
+
 
   useEffect(() => {
     const roomData = async () => {
@@ -25,7 +26,7 @@ export const RoomsCards = () => {
             name={room.name}
             condition={room.condition}
             food={room.food}
-            date={room.admissionDate}
+            admissionDate={room.admissionDate}
           />
         ))}
       </div>

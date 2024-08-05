@@ -35,21 +35,21 @@ export const Description = () => {
           <div className="grid grid-cols-3">
             <div className="flex flex-col justify-center items-center gap-5">
               <h1 className="text-2xl font-extrabold">Desayuno</h1>
-              <h2 className="text-xl font-bold">Normal <span className="text-xl font-bold ml-5">{normalDiet}</span></h2>
-              <h2 className="text-xl font-bold">Blanda <span className="text-xl font-bold ml-5">{blandDiet}</span></h2>
-              <h2 className="text-xl font-bold">Liquida <span className="text-xl font-bold ml-5">{liquidDiet}</span></h2>
+              <h2 className="text-xl font-bold">Normal<span className="text-xl font-bold ml-5">{normalDiet}</span></h2>
+              <h2 className="text-xl font-bold">Blanda<span className="text-xl font-bold ml-5">{blandDiet}</span></h2>
+              <h2 className="text-xl font-bold">Líquida<span className="text-xl font-bold ml-5">{liquidDiet}</span></h2>
             </div>
             <div className="flex flex-col justify-center items-center gap-5">
               <h1 className="text-2xl font-extrabold">Almuerzo</h1>
-              <h2 className="text-xl font-bold">Normal <span className="text-xl font-bold ml-5">{normalDiet}</span></h2>
-              <h2 className="text-xl font-bold">Blanda <span className="text-xl font-bold ml-5">{blandDiet}</span></h2>
-              <h2 className="text-xl font-bold">Liquida <span className="text-xl font-bold ml-5">{liquidDiet}</span></h2>
+              <h2 className="text-xl font-bold">Normal<span className="text-xl font-bold ml-5">{normalDiet}</span></h2>
+              <h2 className="text-xl font-bold">Blanda<span className="text-xl font-bold ml-5">{blandDiet}</span></h2>
+              <h2 className="text-xl font-bold">Líquida<span className="text-xl font-bold ml-5">{liquidDiet}</span></h2>
             </div>
             <div className="flex flex-col justify-center items-center gap-5">
               <h1 className="text-2xl font-extrabold">Merienda</h1>
-              <h2 className="text-xl font-bold">Normal <span className="text-xl font-bold ml-5">{normalDiet}</span></h2>
-              <h2 className="text-xl font-bold">Blanda <span className="text-xl font-bold ml-5">{blandDiet}</span></h2>
-              <h2 className="text-xl font-bold">Liquida <span className="text-xl font-bold ml-5">{liquidDiet}</span></h2>
+              <h2 className="text-xl font-bold">Normal<span className="text-xl font-bold ml-5">{normalDiet}</span></h2>
+              <h2 className="text-xl font-bold">Blanda<span className="text-xl font-bold ml-5">{blandDiet}</span></h2>
+              <h2 className="text-xl font-bold">Líquida<span className="text-xl font-bold ml-5">{liquidDiet}</span></h2>
             </div>
           </div>
         </div>
