@@ -5,7 +5,7 @@ const administratorAPI = 'http://localhost:4321/administrators'
 
 export const loginRequest = async (user) => {
   const response = await axios.post(`${administratorAPI}/login`, user, { withCredentials: true })
-  return console.log(response.data)
+  return response.data
 }
 
 export const dietDataRequest = async () => {
@@ -20,5 +20,20 @@ export const dataRoomRequest = async (roomNumber) => {
 
 export const registerInRoomRequest = async (data) => {
   const response = await axios.post(`${administratorAPI}/register-in-room`, data, { withCredentials: true })
+  return response.data
+}
+
+export const logoutRequest = async () => {
+  const response = await axios.get(`${administratorAPI}/logout`, { withCredentials: true })
+  return response.data
+}
+
+export const verifyRequest = async () => {
+  const response = await axios.get(`${administratorAPI}/verify`, { withCredentials: true })
+  return response.data
+}
+
+export const setParamsInBlankRequest = async (roomNumber) => {
+  const response = await axios.get(`${administratorAPI}/set-params-in-blank/${roomNumber}`, { withCredentials: true })
   return response.data
 }

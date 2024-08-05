@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { RegisterForm } from './RegisterForm'
+import { setParamsInBlankRequest } from '../api/auth'
 
 export const RoomCard = (props) => {
   const { name, condition, food, admissionDate, room } = props
@@ -21,6 +22,17 @@ export const RoomCard = (props) => {
     setFormData(newData)
     setRegisterForm(false)
   }
+
+  const onClickDelete = async (roomNumber) => {
+    try {
+      const response = await setParamsInBlankRequest(roomNumber)
+      if (response) {
+        setFormData(response)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <>
       <div className="bg-sky-800 flex flex-col justify-center gap-3 w-96 h-56 rounded-lg" onKeyDown={handleRegisterClose} tabIndex={0}>
@@ -37,7 +49,10 @@ export const RoomCard = (props) => {
               <h3>Comida: {formData.food}</h3>
               <h3>Fecha de ingreso: {formData.admissionDate}</h3>
             </div>
-            <button className="bg-white text-black font-extrabold font-sans h-10 w-28 mx-auto rounded-lg" onClick={handleRegisterClick}>Modificar</button>
+            <div className="flex mx-auto gap-2">
+              <button className="bg-white text-black font-extrabold font-sans h-10 w-28 rounded-lg" onClick={handleRegisterClick}>Modificar</button>
+              <button className="bg-red-600 text-slate-50 border-2 border-red-950 font-extrabold font-sans h-10 w-28 rounded-lg" onClick={() => onClickDelete(room)}>Dar de Alta</button>
+            </div>
           </>
         )}
         {registerForm && (

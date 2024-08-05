@@ -1,12 +1,35 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Dialog, DialogPanel, PopoverGroup } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import logoSolca from '../assets/logoSolca.png'
+import { verifyRequest, logoutRequest } from '../api/auth'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  
+    const logout = async () => {
+      try {
+        const response = await logoutRequest()
+        console.log(response)
+        if (response) {
+          setIsAuthenticated(false)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
+  useEffect(() => {
+    const verify = async () => {
+      const response = await verifyRequest()
+      if (response) {
+        setIsAuthenticated(true)
+      }
+    }
+    verify()
+  }, [])
 
   return (
     <header className="bg-white">
@@ -37,9 +60,15 @@ export function Header() {
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900 px- py-1 hover: selection:text-sky-700">
             Donaciones
           </a>
-          <a href="/login" className="text-sm font-semibold leading-6 text-white bg-sky-700 rounded-md px-2 py-1 "> 
-            Iniciar Sesion
-          </a>
+          {
+            isAuthenticated ? (
+              <a href='login' className="text-sm font-semibold leading-6 text-white bg-sky-700 rounded-md px-2 py-1 " onClick={logout}>Cerrar Sesion</a>
+            ) : (
+              <a href="/login" className="text-sm font-semibold leading-6 text-white bg-sky-700 rounded-md px-2 py-1 "> 
+                Iniciar Sesion
+              </a>
+            ) 
+          }
         </PopoverGroup>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
