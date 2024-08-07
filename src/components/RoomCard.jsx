@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { RegisterForm } from './RegisterForm'
 import { setParamsInBlankRequest } from '../api/auth'
+import { InfoContext } from '../contexts/InfoContext'
 
 export const RoomCard = (props) => {
   const { name, condition, food, admissionDate, room } = props
   const [registerForm, setRegisterForm] = useState(false)
+  const { updateDietData } = useContext(InfoContext)
   const [formData, setFormData] = useState({ name, condition, admissionDate, food })
 
   const handleRegisterClick = () => {
@@ -21,6 +23,7 @@ export const RoomCard = (props) => {
   const closeCompleteForm = (newData) => {
     setFormData(newData)
     setRegisterForm(false)
+    updateDietData()
   }
 
   const onClickDelete = async (roomNumber) => {
@@ -28,6 +31,7 @@ export const RoomCard = (props) => {
       const response = await setParamsInBlankRequest(roomNumber)
       if (response) {
         setFormData(response)
+        updateDietData()
       }
     } catch (error) {
       console.log(error)

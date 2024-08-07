@@ -15,11 +15,11 @@ export const Login = () => {
     try {
       const response = await loginRequest(data)
       if (response) {
-        window.location.href = "/"
+        window.location.href = "/habitaciones"
       }
     } catch (error) {
       console.log(error.response.data.msg)
-      setError({ type: 'Error: ', message: error.response.data.msg })
+      setError({ type: 'Error: ', message: 'Credenciales incorrectas' })
       console.log(error)
     }
   }

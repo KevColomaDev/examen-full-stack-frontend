@@ -1,21 +1,8 @@
-import { dietDataRequest } from "../api/auth"
-import { useEffect, useState } from "react"
+import { useContext } from 'react'
+import { InfoContext } from '../contexts/InfoContext'
 
 export const Description = () => {
-  const [availableRooms, setAvailableRooms] = useState(0)
-  const [normalDiet, setNormalDiet] = useState(0)
-  const [blandDiet, setBlandDiet] = useState(0)
-  const [liquidDiet, setLiquidDiet] = useState(0)
-  useEffect(() => {
-    const dietData = async () => {
-      const response = await dietDataRequest()
-      setAvailableRooms(response.availableRooms)
-      setNormalDiet(response.normalDiet)
-      setBlandDiet(response.blandDiet)
-      setLiquidDiet(response.liquidDiet)
-    }
-    dietData()
-  }, [])
+  const { availableRooms, normalDiet, blandDiet, liquidDiet } = useContext(InfoContext)
   return (
     <>
       <div className="grid grid-cols-3 text-white font-extrabold font-sans">

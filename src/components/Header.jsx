@@ -1,35 +1,32 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { Dialog, DialogPanel, PopoverGroup } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import logoSolca from '../assets/logoSolca.png'
-import { verifyRequest, logoutRequest } from '../api/auth'
+import { logoutRequest } from '../api/auth'
+import { SessionContext } from '../contexts/SessionContext'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  const { isAuthenticated, loading } = useContext(SessionContext)
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
   
     const logout = async () => {
       try {
         const response = await logoutRequest()
         console.log(response)
         if (response) {
-          setIsAuthenticated(false)
+          window.location.href = "/"
         }
       } catch (error) {
         console.log(error)
       }
     }
-
-  useEffect(() => {
-    const verify = async () => {
-      const response = await verifyRequest()
-      if (response) {
-        setIsAuthenticated(true)
-      }
-    }
-    verify()
-  }, [])
 
   return (
     <header className="bg-white">
