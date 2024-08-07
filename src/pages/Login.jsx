@@ -69,7 +69,7 @@ export const Login = () => {
 
           <div className="mt-4">
             <button className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-              Sign in
+              Ingresar
             </button>
           </div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm aspect-[9/1]">

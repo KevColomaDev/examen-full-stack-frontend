@@ -6,7 +6,6 @@ export const SessionContext = createContext()
 
 export const SessionProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const verify = async () => {
@@ -20,12 +19,11 @@ export const SessionProvider = ({ children }) => {
       } catch (error) {
         setIsAuthenticated(false)
       }
-      setLoading(false)
     }
     verify()
   }, [])
   return (
-    <SessionContext.Provider value={{isAuthenticated, loading}}>
+    <SessionContext.Provider value={{isAuthenticated}}>
       {children}
     </SessionContext.Provider>
   )
