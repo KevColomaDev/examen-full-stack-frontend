@@ -5,8 +5,8 @@ export const Description = () => {
   const { availableRooms, normalDiet, blandDiet, liquidDiet } = useContext(InfoContext)
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-3 text-white font-extrabold font-sans">
-        <div className="ccol-span-1 bg-sky-800 flex flex-col justify-center items-center gap-3 py-16">
+      <div className="grid grid-cols-1 sm:grid-cols-3 text-white font-extrabold font-sans min-h-80">
+        <div className="col-span-1 bg-sky-800 flex flex-col justify-center items-center gap-3 py-5">
           <h1 className="text-3xl"> 
             Habitaciones
           </h1>
