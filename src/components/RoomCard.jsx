@@ -16,12 +16,18 @@ export const RoomCard = (props) => {
 
   const handleRegisterClose = (event) => {
     if (event.key === 'Escape' || event.key === 'Esc') {
+      setFormData({ name: '---', condition: '---', admissionDate: '--/--/----', food: '---' })
       setRegisterForm(false)
+      updateDietData()
     }
   }
 
-  const closeCompleteForm = (newData) => {
-    setFormData(newData)
+  const closeCompleteForm = () => {
+    setRegisterForm(false)
+  }
+
+  const completeForm = (data) => {
+    setFormData(data)
     setRegisterForm(false)
     updateDietData()
   }
@@ -66,6 +72,7 @@ export const RoomCard = (props) => {
                 h_number={room} 
                 completeForm={closeCompleteForm} 
                 initialData={formData}
+                completedForm={completeForm}
               />
             </div>
           </div>

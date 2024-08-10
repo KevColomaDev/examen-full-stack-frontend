@@ -2,15 +2,12 @@ import { useForm } from "react-hook-form"
 import { loginRequest } from "../api/auth"
 import { useState } from "react"
 import { Mensaje } from "../components/Message"
-import { Header } from "../components/Header"
 import logoSolca from "../assets/logoSolca.png"
 
+
 export const Login = () => {
-  // Prevent default form submission
   const { register, handleSubmit } = useForm()
   const [error, setError] = useState({})
-
-
   const onSubmit = async (data) => {
     try {
       const response = await loginRequest(data)
@@ -26,7 +23,6 @@ export const Login = () => {
   
   return (
     <>
-    <Header />
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img

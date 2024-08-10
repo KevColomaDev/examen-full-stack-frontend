@@ -4,7 +4,7 @@ import { registerInRoomRequest } from "../api/auth"
 import { useEffect } from "react"
 
 
-export const RegisterForm = ( { h_number, completeForm, initialData } ) => {
+export const RegisterForm = ( { h_number, completeForm, initialData, completedForm } ) => {
   if (initialData.name === '---') {
     initialData.name = ''
     initialData.condition = ''
@@ -31,10 +31,11 @@ export const RegisterForm = ( { h_number, completeForm, initialData } ) => {
         ...data,
         admissionDate: formatDate(data.admissionDate) // Formatear antes de enviar
       }
-      console.log(formData);
       const response = await registerInRoomRequest(formData)
-      if (response) {
-        completeForm(formData)
+      if (response.msg === 'Patient registered') {
+        completedForm(formData)
+      } else {
+        completeForm()
       }
     } catch (error) {
       console.log(error)
@@ -85,5 +86,6 @@ export const RegisterForm = ( { h_number, completeForm, initialData } ) => {
 RegisterForm.propTypes = {
   h_number: PropTypes.number,
   completeForm: PropTypes.func,
-  initialData: PropTypes.object
+  initialData: PropTypes.object,
+  completedForm: PropTypes.func
 }

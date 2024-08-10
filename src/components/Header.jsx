@@ -1,32 +1,21 @@
 'use client'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { Dialog, DialogPanel, PopoverGroup } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import logoSolca from '../assets/logoSolca.png'
-import { logoutRequest } from '../api/auth'
 import { SessionContext } from '../contexts/SessionContext'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const { isAuthenticated, loading } = useContext(SessionContext)
+  const { isAuthenticated, logout, setIsAuthenticated } = useContext(SessionContext)
 
-  if (loading) {
-    return <div>Loading...</div>
-  }
+  useEffect(() => {
+    setIsAuthenticated(true)
+  },)
 
-  
-    const logout = async () => {
-      try {
-        const response = await logoutRequest()
-        console.log(response)
-        if (response) {
-          window.location.href = "/"
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
+
+
 
   return (
     <header className="bg-white">
@@ -51,14 +40,14 @@ export function Header() {
           <a href="habitaciones" className="text-sm font-semibold leading-6 text-gray-900 px-2 py-1">
             Habitaciones
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900 px-2 py-1">
+          <a href="suministros" className="text-sm font-semibold leading-6 text-gray-900 px-2 py-1">
             Suministros
           </a>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900 px- py-1 hover: selection:text-sky-700">
             Donaciones
           </a>
           {
-            isAuthenticated ? (
+            isAuthenticated === true ? (
               <a href='login' className="text-sm font-semibold leading-6 text-white bg-sky-700 rounded-md px-2 py-1 " onClick={logout}>Cerrar Sesion</a>
             ) : (
               <a href="/login" className="text-sm font-semibold leading-6 text-white bg-sky-700 rounded-md px-2 py-1 "> 
