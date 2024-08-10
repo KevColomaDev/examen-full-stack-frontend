@@ -23,7 +23,7 @@ export function Header() {
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Solca</span>
-            <img alt="" src={logoSolca} className="h-20 w-auto" />
+            <img alt="" src={logoSolca} className="h-12 w-auto sm:h-16 md:h-20 lg:h-24" />
           </a>
         </div>
         <div className="flex lg:hidden">
