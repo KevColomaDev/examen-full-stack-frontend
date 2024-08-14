@@ -49,3 +49,8 @@ export const registerSpplies = async (data) => {
   const response = await axios.post(`${suppliesAPI}/register-supplies`, data, { withCredentials: true })
   return response.data
 }
+
+export const registerSuppliesRoom = async (data) => {
+  const response = await axios.post(`${suppliesAPI}/assign-supplies`, data, { withCredentials: true })
+  return response.data
+}

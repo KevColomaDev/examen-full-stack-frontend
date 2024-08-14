@@ -21,7 +21,7 @@ const InfoSupliesProvider = ({ children }) => {
     suppliesData()
   }, [])
 
-  const updateSuppliesData = async () => {
+  const assignSupliesData = async () => {
     const response = await getAllSuppliesRequest()
     setToothPaste(response.toothPaste)
     setSoap(response.soap)
@@ -36,7 +36,7 @@ const InfoSupliesProvider = ({ children }) => {
         soap,
         toothBrush,
         towel,
-        updateSuppliesData
+        assignSupliesData
       }}
     >
       {children}

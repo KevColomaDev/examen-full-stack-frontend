@@ -1,10 +1,33 @@
 import { useForm } from "react-hook-form"
-
+import { registerSuppliesRoom } from "../api/auth"
+import { useState } from "react"
+import { Mensaje } from "../components/Message"
 export const AsignamentSuplies = () => {
   const { register, handleSubmit } = useForm()
+  const [error, setError] = useState({})
+
+  const onSubmit = async (data) => {
+    try {
+      data.toothPaste = Number(data.toothPaste)
+      data.soap = Number(data.soap)
+      data.toothBrush = Number(data.toothBrush)
+      data.towel = Number(data.towel)
+      // console.log(data)
+      const response = await registerSuppliesRoom(data)
+      if (response) {
+        console.log(response)
+      }
+    } catch (error) {
+      console.log(error)
+      console.log(error.response.data.msg)
+      setError({ type: 'Error: ', message: 'No hay suficientes existencias' })
+    }
+  }
+
+
   return (
     <>
-      <form onSubmit={handleSubmit()}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="bg-sky-100 p-4 max-w-2xl rounded-2xl">
           <div className="flex flex-row justify-center gap-2 font-bold sm:text-3xl mb-8 mt-8">
             <label htmlFor="room" className="w-32 sm:w-64 text-center">Habitación</label>
@@ -47,6 +70,9 @@ export const AsignamentSuplies = () => {
           </div>
         </div>
       </form>
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm aspect-auto">
+        {Object.keys(error).length > 0 && <Mensaje type={error.type} message={error.message}/>}
+      </div>
     </>
   )
 }
