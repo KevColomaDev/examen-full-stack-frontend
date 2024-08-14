@@ -36,7 +36,7 @@ export const Login = () => {
         </div>
         <form className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm" onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-            Ususario
+            Usuario
           </label>
           <div className="mt-2">
             <input
