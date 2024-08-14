@@ -14,6 +14,7 @@ export const RegisterForm = ( { h_number, completeForm, initialData, completedFo
   const { register, handleSubmit, reset } = useForm( { defaultValues: initialData } )
 
   const parseDate = (date) => {
+    if (!date || date.includes('-')) return date
     const [day, month, year] = date.split('/')
     return `${year}-${month}-${day}`
   }
@@ -29,7 +30,7 @@ export const RegisterForm = ( { h_number, completeForm, initialData, completedFo
       const formData = {
         h_number: h_number,
         ...data,
-        admissionDate: formatDate(data.admissionDate) // Formatear antes de enviar
+        admissionDate: data.admissionDate ? formatDate(data.admissionDate) : '' // Asegurar un valor válido o vacío
       }
       const response = await registerInRoomRequest(formData)
       if (response.msg === 'Patient registered') {
@@ -45,9 +46,10 @@ export const RegisterForm = ( { h_number, completeForm, initialData, completedFo
   useEffect(() => {
     const formattedData = {
       ...initialData,
-      admissionDate: parseDate(initialData.admissionDate) // Convertir al formato yyyy-MM-dd
+      admissionDate: initialData.admissionDate ? parseDate(initialData.admissionDate) : '' // Solo formatear si hay una fecha válida
     }
     reset(formattedData)
+    // console.log(initialData)
   }, [initialData, reset])
 
   return (

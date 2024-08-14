@@ -14,20 +14,16 @@ export const RoomCard = (props) => {
     setRegisterForm(true)
   }
 
-  const handleRegisterClose = (event) => {
+  const handleRegisterCloseCancel = (event) => {
     if (event.key === 'Escape' || event.key === 'Esc') {
-      setFormData({ name: '---', condition: '---', admissionDate: '--/--/----', food: '---' })
       setRegisterForm(false)
-      updateDietData()
     }
   }
 
-  const closeCompleteForm = () => {
-    setRegisterForm(false)
-  }
-
   const completeForm = (data) => {
-    setFormData(data)
+    if (data.name && data.condition && data.admissionDate && data.food) {
+      setFormData(data)
+    }
     setRegisterForm(false)
     updateDietData()
   }
@@ -48,7 +44,7 @@ export const RoomCard = (props) => {
     <>
       <div
         className="bg-sky-800 flex flex-col justify-center gap-3 w-full max-w-xs md:max-w-md lg:max-w-lg h-72 p-6 rounded-lg"
-        onKeyDown={handleRegisterClose}
+        onKeyDown={handleRegisterCloseCancel}
         tabIndex={0}
       >
         <h1 className="text-2xl md:text-3xl text-center text-white font-extrabold font-sans">
@@ -79,12 +75,11 @@ export const RoomCard = (props) => {
         {registerForm && (
           <div
             className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center bg-gray-500 bg-opacity-50"
-            onClick={handleRegisterClose}
           >
             <div className="bg-white p-8 w-full max-w-sm md:max-w-md lg:max-w-lg rounded-lg">
               <RegisterForm
                 h_number={room}
-                completeForm={closeCompleteForm}
+                completeForm={() => setRegisterForm(false)}
                 initialData={formData}
                 completedForm={completeForm}
               />
