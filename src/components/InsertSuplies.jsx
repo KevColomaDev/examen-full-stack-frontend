@@ -35,7 +35,7 @@ export const InsertSuplies = () => {
           </div>
           <div className="flex flex-row justify-center gap-2 font-bold sm:text-3xl mb-8">
             <label htmlFor="towel" className="w-32 sm:w-64 text-center">Toallas</label>
-            <input type="number" id="towel" placeholder="0" min={0} max={9} value={0} className="text-center w-10 sm:w-16 rounded-lg " {...register("towel")}/>
+            <input type="number" id="towel" placeholder="0" min={0} max={9} defaultValue={0} className="text-center w-10 sm:w-16 rounded-lg " {...register("towel")}/>
           </div>
           <div className="flex justify-center">
             <button type="submit" className="text-white w-32 sm:w-44 sm:text-2xl bg-sky-900 p-2 rounded-2xl font-bold mb-8">Ingresar</button>
