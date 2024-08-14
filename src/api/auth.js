@@ -1,7 +1,7 @@
 import axios from "axios"
 
-// const administratorAPI = 'http://localhost:4321/administrators'
-// const suppliesAPI = 'http://localhost:4321/supplies'
+//const administratorAPI = 'http://localhost:4321/administrators'
+//const suppliesAPI = 'http://localhost:4321/supplies'
 const administratorAPI = 'https://examen-full-stack-backend.onrender.com/administrators'
 const suppliesAPI = 'https://examen-full-stack-backend.onrender.com/supplies'
 
