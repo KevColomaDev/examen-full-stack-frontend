@@ -1,8 +1,12 @@
 import { useForm } from "react-hook-form"
 import { registerSpplies } from "../api/auth"
+import { useContext } from "react"
+import { InfoSupliesContext } from "../contexts/InfoSupliesContext"
 
 export const InsertSuplies = () => {
   const { register, handleSubmit } = useForm()
+
+  const { assignSupliesData } = useContext(InfoSupliesContext)
   const onSubmit = async (data) => {
     try {
       data.toothPaste = Number(data.toothPaste)
@@ -11,7 +15,8 @@ export const InsertSuplies = () => {
       data.towel = Number(data.towel)
       const response = await registerSpplies(data)
       if (response) {
-        console.log(response)
+        // console.log(response)
+        assignSupliesData(response)
       }
     } catch (error) {
       console.log(error)

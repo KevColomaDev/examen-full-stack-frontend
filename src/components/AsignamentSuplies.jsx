@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form"
 import { registerSuppliesRoom } from "../api/auth"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Mensaje } from "../components/Message"
+import { InfoSupliesContext } from "../contexts/InfoSupliesContext"
 export const AsignamentSuplies = () => {
   const { register, handleSubmit } = useForm()
   const [error, setError] = useState({})
+  const { assignSupliesData } = useContext(InfoSupliesContext)
 
   const onSubmit = async (data) => {
     try {
@@ -15,7 +17,8 @@ export const AsignamentSuplies = () => {
       // console.log(data)
       const response = await registerSuppliesRoom(data)
       if (response) {
-        console.log(response)
+        // console.log(response)
+        assignSupliesData(response)
       }
     } catch (error) {
       console.log(error)
