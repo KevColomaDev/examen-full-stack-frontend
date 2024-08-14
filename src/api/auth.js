@@ -1,9 +1,9 @@
 import axios from "axios"
 
-const administratorAPI = 'http://localhost:4321/administrators'
-const suppliesAPI = 'http://localhost:4321/supplies'
-// const administratorAPI = 'https://backend-hospital-0f3d.onrender.com/administrators'
-// const suppliesAPI = 'https://backend-hospital-0f3d.onrender.com/supplies'
+// const administratorAPI = 'http://localhost:4321/administrators'
+// const suppliesAPI = 'http://localhost:4321/supplies'
+const administratorAPI = 'https://backend-hospital-0f3d.onrender.com/administrators'
+const suppliesAPI = 'https://backend-hospital-0f3d.onrender.com/supplies'
 
 export const loginRequest = async (user) => {
   const response = await axios.post(`${administratorAPI}/login`, user, { withCredentials: true })
