@@ -43,7 +43,7 @@ export const RegisterForm = ({ h_number, completeForm, initialData, completedFor
       name: '' || initialData.name.includes('-') ? '' : initialData.name,
       condition: '' || initialData.condition.includes('-') ? '' : initialData.condition,
       food: '' || initialData.food.includes('-') ? '' : initialData.food,
-      admissionDate: initialData.admissionDate ? parseDate(initialData.admissionDate) : ''
+      admissionDate: '' || initialData.admissionDate.includes('-') ? '' : parseDate(initialData.admissionDate)
     }
     reset(formattedData)
   }, [initialData, reset])

@@ -33,14 +33,18 @@ export const RoomCard = (props) => {
   }
 
   const onClickDelete = async (roomNumber) => {
-    try {
-      const response = await setParamsInBlankRequest(roomNumber)
-      if (response) {
-        setFormData(response)
-        updateDietData()
+    const confirmed = window.confirm("¿Estás seguro de que quieres dar de alta?");
+    
+    if (confirmed) {
+      try {
+        const response = await setParamsInBlankRequest(roomNumber);
+        if (response) {
+          setFormData(response);
+          updateDietData();
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error)
     }
   }
 
