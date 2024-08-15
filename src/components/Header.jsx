@@ -43,9 +43,9 @@ export function Header() {
           <a href="suministros" className="text-sm font-semibold leading-6 text-gray-900 px-2 py-1">
             Suministros
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900 px- py-1 hover: selection:text-sky-700">
+          {/* <a href="#" className="text-sm font-semibold leading-6 text-gray-900 px- py-1 hover: selection:text-sky-700">
             Donaciones
-          </a>
+          </a> */}
           {
             isAuthenticated === true ? (
               <a href='login' className="text-sm font-semibold leading-6 text-white bg-sky-700 rounded-md px-2 py-1 " onClick={logout}>Cerrar Sesion</a>
@@ -93,12 +93,12 @@ export function Header() {
                 >
                   Suministros
                 </a>
-                <a
+                {/* <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Donaciones
-                </a>
+                </a> */}
               </div>
               <div className="py-6">
                 {
