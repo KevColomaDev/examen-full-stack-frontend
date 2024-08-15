@@ -17,7 +17,11 @@ export const RoomCard = (props) => {
   const handleRegisterCloseCancel = (event) => {
     if (event.key === 'Escape' || event.key === 'Esc') {
       setRegisterForm(false)
-    }
+    } 
+  }
+
+  const closeCompleteForm = () => {
+    setRegisterForm(false)
   }
 
   const completeForm = (data) => {
@@ -79,10 +83,16 @@ export const RoomCard = (props) => {
             <div className="bg-white p-8 w-full max-w-sm md:max-w-md lg:max-w-lg rounded-lg">
               <RegisterForm
                 h_number={room}
-                completeForm={() => setRegisterForm(false)}
+                completeForm={closeCompleteForm}
                 initialData={formData}
                 completedForm={completeForm}
               />
+              <button
+                className="bg-red-600 text-white font-extrabold mt-4 h-10 w-full rounded-lg"
+                onClick={() => setRegisterForm(false)}
+              >
+                Cancelar
+              </button>
             </div>
           </div>
         )}
