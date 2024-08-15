@@ -1,8 +1,18 @@
-# React + Vite
+# Proyecto Centro de Hospitalidad SOLCA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación frontend desarrollada para el Centro de Hospitalidad SOLCA. La aplicación permite a los usuarios acceder a diversos servicios y recursos relacionados con el centro.
 
-Currently, two official plugins are available:
+## Despliegue del Frontend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+El frontend del proyecto está desplegado en el siguiente enlace:
+
+🌐 [Centro de Hospitalidad SOLCA - Frontend](https://centro-de-hospitalidad-solca.vercel.app/)
+
+## Cómo Empezar
+
+Para clonar el repositorio y ejecutar el proyecto localmente, sigue los pasos a continuación:
+
+1. Clona este repositorio:
+
+   ```bash
+   git clone https://github.com/tu_usuario/tu_repositorio.git
