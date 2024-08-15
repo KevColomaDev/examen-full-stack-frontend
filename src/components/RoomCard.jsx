@@ -17,19 +17,19 @@ export const RoomCard = (props) => {
   const handleRegisterCloseCancel = (event) => {
     if (event.key === 'Escape' || event.key === 'Esc') {
       setRegisterForm(false)
-    } 
+    }
   }
 
   const closeCompleteForm = () => {
-    setRegisterForm(false)
+    setRegisterForm(false) // Solo cierra el formulario sin modificar el estado
   }
 
   const completeForm = (data) => {
     if (data.name && data.condition && data.admissionDate && data.food) {
-      setFormData(data)
+      setFormData(data) // Actualiza los datos solo si el formulario se completa correctamente
+      updateDietData()
     }
     setRegisterForm(false)
-    updateDietData()
   }
 
   const onClickDelete = async (roomNumber) => {
@@ -89,7 +89,7 @@ export const RoomCard = (props) => {
               />
               <button
                 className="bg-red-600 text-white font-extrabold mt-4 h-10 w-full rounded-lg"
-                onClick={() => setRegisterForm(false)}
+                onClick={closeCompleteForm} // Solo cierra el formulario al cancelar
               >
                 Cancelar
               </button>

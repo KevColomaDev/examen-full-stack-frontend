@@ -5,12 +5,6 @@ import { useEffect } from "react"
 
 
 export const RegisterForm = ({ h_number, completeForm, initialData, completedForm }) => {
-  if (initialData.name === '---') {
-    initialData.name = ''
-    initialData.condition = ''
-    initialData.food = ''
-    initialData.admissionDate = ''
-  }
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm({ defaultValues: initialData })
 
@@ -31,7 +25,7 @@ export const RegisterForm = ({ h_number, completeForm, initialData, completedFor
       const formData = {
         h_number: h_number,
         ...data,
-        admissionDate: data.admissionDate ? formatDate(data.admissionDate) : '' // Asegurar un valor válido o vacío
+        admissionDate: data.admissionDate ? formatDate(data.admissionDate) : ''
       }
       const response = await registerInRoomRequest(formData)
       if (response.msg === 'Patient registered') {
@@ -46,8 +40,10 @@ export const RegisterForm = ({ h_number, completeForm, initialData, completedFor
 
   useEffect(() => {
     const formattedData = {
-      ...initialData,
-      admissionDate: initialData.admissionDate ? parseDate(initialData.admissionDate) : '' // Solo formatear si hay una fecha válida
+      name: '' || initialData.name.includes('-') ? '' : initialData.name,
+      condition: '' || initialData.condition.includes('-') ? '' : initialData.condition,
+      food: '' || initialData.food.includes('-') ? '' : initialData.food,
+      admissionDate: initialData.admissionDate ? parseDate(initialData.admissionDate) : ''
     }
     reset(formattedData)
   }, [initialData, reset])
