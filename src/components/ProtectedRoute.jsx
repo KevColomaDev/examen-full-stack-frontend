@@ -35,7 +35,7 @@ export const ProtectedRoute = ({ children }) => {
 
 
   if (!isAuthenticated) {
-    window.location.href = '/login'
+    window.location.href = 'https://centro-de-hospitalidad-solca.vercel.app/login'
     return null;
   }
 
