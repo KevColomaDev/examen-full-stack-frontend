@@ -58,7 +58,7 @@ export const RegisterForm = ({ h_number, completeForm, initialData, completedFor
         {...register("name", {
           required: "El nombre es requerido.",
           pattern: {
-            value: /^[A-Za-z\s]+$/i,
+            value: /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/i,
             message: "Solo se permiten letras y espacios."
           },
           maxLength: {
@@ -81,8 +81,8 @@ export const RegisterForm = ({ h_number, completeForm, initialData, completedFor
         {...register("condition", {
           required: "La condición es requerida.",
           pattern: {
-            value: /^[A-Za-z\s]+$/i,
-            message: "Solo se permiten letras y espacios."
+            value: /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/i,
+            message: "Solo se permiten letras y espacios"
           },
           maxLength: {
             value: 20,
@@ -112,7 +112,7 @@ export const RegisterForm = ({ h_number, completeForm, initialData, completedFor
       />
       {errors.admissionDate && <span className="text-red-500 font-bold">{errors.admissionDate.message}</span>}
 
-      <button type="submit" className="bg-white text-black font-extrabold font-sans h-10 w-36 mx-auto rounded-lg">Registrar</button>
+      <button type="submit" className="bg-white text-black font-extrabold font-sans h-10 w-36 mx-auto rounded-lg">Guardar</button>
     </form>
   )
 }
