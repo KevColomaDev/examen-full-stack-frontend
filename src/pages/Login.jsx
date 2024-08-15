@@ -1,18 +1,22 @@
 import { useForm } from "react-hook-form"
 import { loginRequest } from "../api/auth"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Mensaje } from "../components/Message"
 import logoSolca from "../assets/logoSolca.png"
+import { SessionContext } from "../contexts/SessionContext"
+import { useContext } from "react"
 
 
 export const Login = () => {
   const { register, handleSubmit } = useForm()
   const [error, setError] = useState({})
+  const { setIsAuthenticated, isAuthenticated } = useContext(SessionContext)
   const onSubmit = async (data) => {
     try {
       const response = await loginRequest(data)
       if (response) {
-        window.location.href = "/habitaciones"
+        setIsAuthenticated(true)
+        console.log(isAuthenticated)
       }
     } catch (error) {
       console.log(error.response.data.msg)
@@ -20,6 +24,13 @@ export const Login = () => {
       console.log(error)
     }
   }
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      console.log(isAuthenticated)
+      window.location.href = "/habitaciones"
+    }
+  },[isAuthenticated])
   
   return (
     <>

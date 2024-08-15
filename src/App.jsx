@@ -3,6 +3,7 @@ import { Login } from './pages/Login'
 import { Dashboard } from './pages/Dashboard'
 import { Suplies } from './pages/Suplies'
 import { SessionProvider } from './contexts/SessionContext'
+import { ProtectedRoute } from './components/ProtectedRoute'
 function App() {
 
   return (
@@ -11,8 +12,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/habitaciones" element={<Dashboard />} />
-          <Route path='/suministros' element={<Suplies />} />
+          <Route path="/habitaciones" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path='/suministros' element={<ProtectedRoute><Suplies /></ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
     </SessionProvider>

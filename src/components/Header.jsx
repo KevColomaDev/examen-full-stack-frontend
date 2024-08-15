@@ -1,21 +1,20 @@
 'use client'
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { Dialog, DialogPanel, PopoverGroup } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import logoSolca from '../assets/logoSolca.png'
 import { SessionContext } from '../contexts/SessionContext'
+import { useEffect } from 'react'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const { isAuthenticated, logout, setIsAuthenticated } = useContext(SessionContext)
+  const { isAuthenticated, logout, verify } = useContext(SessionContext)
 
   useEffect(() => {
-    setIsAuthenticated(true)
-  },)
-
-
-
+    verify()
+  }, [isAuthenticated, verify])
+  
 
   return (
     <header className="bg-white">
